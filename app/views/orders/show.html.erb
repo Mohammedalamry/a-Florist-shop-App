@@ -1,0 +1,18 @@
+
+   <h1>  <%= link_to 'Homepage', products_path %></h1>
+   <strong> show you orders<%= link_to "click orders ", orders_path, { :class => "button waves-effect waves-light btn" } %></strong>
+   <br><br>  
+
+
+<h4> Desired quantity   <%=@order.amount %></h4>
+
+<ul>
+<% @order.products.each do |i| %>
+  
+  <li> <%= image_tag(i.img, size: "100x100", alt: "Product Image") %></li>
+   <li>  Price  <%= i.price %></li> 
+  <% end %>
+</ul>
+m =@order.products.price
+
+ 

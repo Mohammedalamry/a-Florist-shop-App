@@ -1,0 +1,30 @@
+ 
+   <h1>  <%= link_to 'Homepage', products_path %></h1>
+ 
+
+ <table class="table striped bordered">
+  <tr>
+    <th>Order Qunity</th>
+    <th>Edit The Order</th>
+    
+  </tr>
+ 
+  <% @orders.each do |order| %>
+      <tr>
+        
+         <td><%= order.amount%></td>
+
+        <td><a class="btn-floating btn-large red" href="<%= edit_order_path(order.id) %>" >
+      				<i class="large material-icons">Edit The Order</i>
+    			</a>
+        </td>
+         <td>  <%#= image_tag(product.img, size: "100x100", alt: "Product Image") %> 
+        </td>
+          <td> 
+          <%= button_to "Delete", order_path(order.id), method: :delete,
+             data: { confirm: "Are you sure?" } %>
+             </td>
+
+      </tr>
+  <% end %>
+</table>

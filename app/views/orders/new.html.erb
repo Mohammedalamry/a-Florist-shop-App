@@ -1,0 +1,28 @@
+<h1>  <%= link_to 'Homepage', products_path %></h1>
+<strong> show you orders page<%= link_to "click here ", orders_path, { :class => "button waves-effect waves-light btn" } %></strong>
+<br><br>  
+
+<h1><%= current_user.email %>'s Orsder</h1>
+
+ 
+ <%= form_for @order do |f| %>
+    <%= f.hidden_field :order_id, :value => @order.id %>
+    <div class="input-field col s6">
+        <%= f.label :amount, 'Enter quntity' %>
+        <%= f.text_field :amount %>
+    </div>
+      
+ <div>
+<%= f.collection_check_boxes(:product_ids, Product.all, :id,:img) do |i| %>
+  <%= i.label %>
+  <%= i.label { i.check_box } %>
+ 
+<% end %>
+</div>
+
+ 
+
+<p>    <%= f.submit "Submit", :class => "btn waves-effect waves-light" %>
+  <% end %>
+  </p>
+  <%= link_to 'Back', products_path %>

@@ -1,0 +1,25 @@
+<h1>All the Products</h1>
+ 
+<strong> show you orders page<%= link_to "click here ", orders_path, { :class => "button waves-effect waves-light btn" } %></strong>
+<br><br>  
+
+
+<table class="table striped bordered">
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Price</th>
+
+    <th>Stack</th>
+  </tr>
+
+  <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product_path(product) %></td>
+        <td><%= image_tag(product.img, size: "100x100", alt: "Product Image") %></td>
+        <td><%= product.price %></td>
+        <td><%= product.stack%></td>
+        <td><%= link_to "Buy" , orders_new_path(:product_id => product.id)%></td>
+      </tr>
+  <% end %>
+</table>
